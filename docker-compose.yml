@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  titandemo:
+    image: titandemo
+    build:
+      context: .\TitanDemo
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
+  titandb:
+    image: microsoft/mssql-server-windows-developer
+    environment: 
+      sa_password: "Ade9rr3kl_34"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+networks:
+  default:
+    external:
+      name: nat
